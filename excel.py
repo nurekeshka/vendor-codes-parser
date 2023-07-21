@@ -12,4 +12,4 @@ class Excel:
     
     @property
     def values(self) -> Generator[Tuple[Cell], None, None]:
-        return self.worksheet.rows
+        return self.worksheet.values
