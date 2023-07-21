@@ -14,7 +14,7 @@ def main():
     generator = Generator(serializer.data)
 
     try:
-        generator.export(sys.argv[2])
+        generator.export_as_xlsx(sys.argv[2])
     except IndexError as exception:
         raise ValueError('Export filename was not provided in system args.') from exception
 
