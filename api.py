@@ -17,8 +17,10 @@ class AutopartsSearch:
     def get_autoparts_from(self, vendor_code: str) -> List[Dict[str, str | int]]:
         params = {**self.auth_credits, **{'number': vendor_code}}
         data = requests.get(url=f'{self.host}/search/brands/', params=params).json()
-        return list(data.values())
+        return None if data.get('errorCode') == 301 else list(data.values())
 
     def get_brands_from(self, vendor_code: str) -> List[str]:
         data = self.get_autoparts_from(vendor_code=vendor_code)
-        return [autopart['brand'] for autopart in data]
+        
+        if data:
+            return [autopart['brand'] for autopart in data]
