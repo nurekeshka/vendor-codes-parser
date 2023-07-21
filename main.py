@@ -10,7 +10,7 @@ def main():
     except IndexError as exception:
         raise ValueError('Import filename was not provided in system args.') from exception
 
-    serializer = Serializer(excel.rows)
+    serializer = Serializer(excel.values)
     generator = Generator(serializer.data)
 
     try:
